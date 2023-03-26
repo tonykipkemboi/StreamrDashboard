@@ -59,7 +59,7 @@ def main():
     st.title("Streamr API Dashboard")
     with st.expander('Enter node address'):
         node_address = st.text_input(
-            "", "0x4a2a3501e50759250828acd85e7450fb55a10a69")
+            "")
 
     if node_address:
         node_data = fetch_node_data(node_address)
