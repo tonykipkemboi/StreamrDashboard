@@ -7,6 +7,7 @@ from reportlab.graphics import renderPM
 from PIL import Image
 import io
 import math
+import concurrent.futures
 
 API_BASE = "https://brubeckscan.app/api"
 
@@ -26,7 +27,11 @@ def get_metrics_data(node_address):
         "claimed_rewards": f"https://brubeck1.streamr.network:3013/stats/{node_address}",
         "apr_apy": "https://brubeck1.streamr.network:3013/apy"
     }
-    return {k: fetch_data(v) for k, v in data.items()}
+
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        future_to_url = {executor.submit(
+            fetch_data, url): key for key, url in data.items()}
+        return {future_to_url[future]: future.result() for future in concurrent.futures.as_completed(future_to_url)}
 
 
 def check_status(status):
