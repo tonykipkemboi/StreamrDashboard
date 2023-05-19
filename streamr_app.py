@@ -7,14 +7,20 @@ from reportlab.graphics import renderPM
 from PIL import Image
 import io
 import math
+import re
 import concurrent.futures
 
 API_BASE = "https://brubeckscan.app/api"
 
 
 def fetch_data(endpoint):
-    response = requests.get(endpoint)
-    return response.json()
+    try:
+        response = requests.get(endpoint)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Request to {endpoint} failed: {e}")
+        return None
 
 
 def fetch_node_data(node_address):
@@ -31,7 +37,11 @@ def get_metrics_data(node_address):
     with concurrent.futures.ThreadPoolExecutor() as executor:
         future_to_url = {executor.submit(
             fetch_data, url): key for key, url in data.items()}
-        return {future_to_url[future]: future.result() for future in concurrent.futures.as_completed(future_to_url)}
+        results = {future_to_url[future]: future.result(
+        ) for future in concurrent.futures.as_completed(future_to_url)}
+
+    # Exclude any endpoints that failed to respond
+    return {k: v for k, v in results.items() if v is not None}
 
 
 def check_status(status):
@@ -133,10 +143,21 @@ def main():
         "Enter a Streamr node Ethereum address here", placeholder="0x4a2A3501e50759250828ACd85E7450fb55A10a69", max_chars=42)
 
     if node_address:
-        node_data = fetch_node_data(node_address)
-        get_metrics_data(node_address)
-        display_node_info(node_address, node_data)
-        display_payouts(node_data)
+        if re.match("^0x[a-fA-F0-9]{40}$", node_address):
+            node_data = fetch_node_data(node_address)
+            if node_data is not None and 'data' in node_data and 'node' in node_data['data']:
+                get_metrics_data(node_address)
+                display_node_info(node_address, node_data)
+                display_payouts(node_data)
+            else:
+                st.error(
+                    "Failed to fetch data for the given Ethereum address. Please make sure it is a valid Streamr node address.")
+        else:
+            st.error(
+                "Invalid Ethereum address. It should be 42 characters long (including '0x') and hexadecimal.")
+    else:
+        st.warning(
+            "Please enter a Streamr node Ethereum address to fetch data...")
 
 
 if __name__ == '__main__':
