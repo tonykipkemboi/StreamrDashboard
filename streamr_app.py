@@ -285,7 +285,7 @@ def main() -> None:
     Returns:
         None
     """
-    st.title("⚡ Streamr BrubeckScan Dashboard App⚡")
+    st.title("⚡Streamr BrubeckScan Dashboard App⚡")
     node_address = st.text_input(
         "Enter a Streamr Node Ethereum address here", placeholder="0x4a2A3501e50759250828ACd85E7450fb55A10a69", max_chars=42)
     with st.expander('Copy the address in this expander and paste above for testing 🎉'):
