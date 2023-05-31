@@ -18,7 +18,7 @@ import config
 # Streamlit page config has to be the first line of code
 st.set_page_config(
     page_title="Streamr BrubeckScan Dashboard App",
-    page_icon=":ocean:",
+    page_icon=":lightning:",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
@@ -285,7 +285,7 @@ def main() -> None:
     Returns:
         None
     """
-    st.title("⚡ Streamr BrubeckScan Dashboard ⚡")
+    st.title("⚡ Streamr BrubeckScan Dashboard App⚡")
     node_address = st.text_input(
         "Enter a Streamr Node Ethereum address here", placeholder="0x4a2A3501e50759250828ACd85E7450fb55A10a69", max_chars=42)
     with st.expander('Copy the address in this expander and paste above for testing 🎉'):
@@ -313,6 +313,14 @@ def main() -> None:
             "No Streamr node Ethereum address provided...")
         st.warning(
             "Please enter a Streamr node Ethereum address to fetch data...")
+
+    st.markdown("🔗 **Useful Links**")
+    st.markdown("- [Streamr Network](https://network.streamr.network/)")
+    st.markdown("- [Streamr Hub](https://streamr.network/core)")
+    st.markdown("- [Earn $DATA](https://frens.streamr.network/intro)")
+    st.markdown("- [Streamr Twitter](https://twitter.com/streamr)")
+    st.markdown(
+        "💡 **Remember:** Keep building and shipping for a robust decentralized data economy!")
 
 
 if __name__ == '__main__':
