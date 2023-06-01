@@ -16,7 +16,7 @@ from svglib.svglib import svg2rlg
 import config
 
 # Streamlit page config MUST be the first Streamlit command
-# used in your app, and must onyl be set once
+# used in your app, and MUST only be set once
 st.set_page_config(
     page_title="Streamr BrubeckScan Dashboard App",
     page_icon=":lightning:",
