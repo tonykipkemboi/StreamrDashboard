@@ -24,7 +24,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
     menu_items={
         'Get help': 'https://www.thedataengineerblog.com/',
-        'About': "# This is a Streamlit clone version of the official Streamr BrubecScan dashboard."
+        'About': "# This is a Streamlit clone version of the official Streamr BrubeckScan dashboard."
     })
 
 # Set up logging
@@ -92,46 +92,6 @@ def get_metrics_data(node_address: str) -> dict:
     return {k: v for k, v in results.items() if v is not None}
 
 
-def check_status(status: bool) -> str:
-    """
-    Check the status of a Streamr node.
-
-    Args:
-        status: The status of the Streamr node.
-
-    Returns:
-        A string representing the status of the Streamr node.
-    """
-    return ":green[OK]" if status else ":red[NO]"
-
-
-def display_node_info(node_address: str, node_data: dict) -> None:
-    """
-    Display information about a specific Streamr node.
-
-    Args:
-        node_address: The Ethereum address of the Streamr node.
-        node_data: The data for the Streamr node.
-
-    Returns:
-        None
-    """
-    st.divider()
-    col1, col2, col3 = st.columns(3)
-    col1.image(node_data['data']['node']['identiconURL'],
-               caption='Node Identicon')
-    col2.metric("Node Address", node_address[:4] + "...")
-    col1.markdown(
-        f"Status: **{check_status(node_data['data']['node']['status'])}**")
-    col3.metric("Staked $DATA", node_data['data']['node']['staked'])
-    col2.metric("To be Received", round(
-        node_data['data']['node']['toBeReceived'], 2))
-    col2.metric("Total rewards", node_data['data']['node']['rewards'])
-    col3.metric("Claim Count", node_data['data']['node']['claimCount'])
-    col3.metric("Percentage of received claims %", round(
-        node_data['data']['node']['claimPercentage'], 2))
-
-
 def convert_time_to_user_tz(time_str: str, user_tz: str) -> str:
     """
     Convert a time string to a given timezone and format it.
@@ -185,6 +145,46 @@ def convert_dt_to_user_tz(dt: datetime, user_tz: str) -> str:
     formatted_time = dt_user_tz.strftime("%a, %d %b %Y %H:%M:%S %Z")
 
     return formatted_time
+
+
+def check_status(status: bool) -> str:
+    """
+    Check the status of a Streamr node.
+
+    Args:
+        status: The status of the Streamr node.
+
+    Returns:
+        A string representing the status of the Streamr node.
+    """
+    return ":green[OK]" if status else ":red[NO]"
+
+
+def display_node_info(node_address: str, node_data: dict) -> None:
+    """
+    Display information about a specific Streamr node.
+
+    Args:
+        node_address: The Ethereum address of the Streamr node.
+        node_data: The data for the Streamr node.
+
+    Returns:
+        None
+    """
+    st.divider()
+    col1, col2, col3 = st.columns(3)
+    col1.image(node_data['data']['node']['identiconURL'],
+               caption='Node Identicon')
+    col2.metric("Node Address", node_address[:4] + "...")
+    col1.markdown(
+        f"Status: **{check_status(node_data['data']['node']['status'])}**")
+    col3.metric("Staked $DATA", node_data['data']['node']['staked'])
+    col2.metric("To be Received", round(
+        node_data['data']['node']['toBeReceived'], 2))
+    col2.metric("Total rewards", node_data['data']['node']['rewards'])
+    col3.metric("Claim Count", node_data['data']['node']['claimCount'])
+    col3.metric("Percentage of received claims %", round(
+        node_data['data']['node']['claimPercentage'], 2))
 
 
 def display_latest_codes(node_data: dict, col: st.delta_generator.DeltaGenerator) -> None:
