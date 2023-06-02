@@ -9,6 +9,7 @@ from typing import Optional
 import pytz
 import requests
 import streamlit as st
+import streamlit.components.v1 as components
 from PIL import Image
 from reportlab.graphics import renderPM
 from svglib.svglib import svg2rlg
@@ -18,7 +19,7 @@ import config
 # Streamlit page config MUST be the first Streamlit command
 # used in your app, and MUST only be set once
 st.set_page_config(
-    page_title="Streamr BrubeckScan Dashboard App",
+    page_title="Streamr Node Dashboard App",
     page_icon=":lightning:",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -286,7 +287,7 @@ def main() -> None:
     Returns:
         None
     """
-    st.title("⚡Streamr BrubeckScan Dashboard App⚡")
+    st.title("⚡Streamr Node Dashboard App⚡")
     node_address = st.text_input(
         "Enter a Streamr Node Ethereum address here", placeholder="0x4a2A3501e50759250828ACd85E7450fb55A10a69", max_chars=42)
     with st.expander('Copy the address in this expander and paste above for testing 🎉'):
@@ -316,12 +317,42 @@ def main() -> None:
             "Please enter a Streamr node Ethereum address to fetch data...")
 
     st.markdown("🔗 **Useful Links**")
-    st.markdown("- [Streamr Network](https://network.streamr.network/)")
-    st.markdown("- [Streamr Hub](https://streamr.network/core)")
+    st.markdown("- [Streamr Network](https://streamr.network/)")
+    st.markdown("- [Streamr Hub](https://streamr.network/projects)")
     st.markdown("- [Earn $DATA](https://frens.streamr.network/intro)")
     st.markdown("- [Streamr Twitter](https://twitter.com/streamr)")
     st.markdown(
         "💡 **Remember:** Keep building and shipping for a robust decentralized data economy!")
+
+    footer = """
+        <style>
+            a:link , a:visited{
+            color: blue;
+            background-color: transparent;
+            text-decoration: underline;
+            }
+
+            a:hover,  a:active {
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+            }
+
+            .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+            color: black;
+            text-align: center;
+            }
+        </style>
+        <div class="footer">
+            <p>Made with ❤ by <a href="https://twitter.com/tonykipkemboi" target="_blank">Tony Kipkemboi</a> | <a href="http://thedataengineeringblog.com/" target="_blank">Subscribe to my blog</a></p>
+        </div>
+    """
+    st.markdown(footer, unsafe_allow_html=True)
 
 
 if __name__ == '__main__':
