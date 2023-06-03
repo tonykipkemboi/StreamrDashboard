@@ -353,19 +353,6 @@ def main() -> None:
         </div>
     """
     st.markdown(footer, unsafe_allow_html=True)
-    coffee = """
-    <style>
-        .coffee {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-        }
-    </style>
-    <div class="coffee">
-        <a href="https://www.buymeacoffee.com/tonykip"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=tonykip&button_colour=5F7FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>    
-    </div>
-    """
-    st.markdown(coffee, unsafe_allow_html=True)
 
 
 if __name__ == '__main__':
