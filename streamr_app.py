@@ -349,7 +349,7 @@ def main() -> None:
             }
         </style>
         <div class="footer">
-            <p>Made with ❤ by <a href="https://twitter.com/tonykipkemboi" target="_blank">Tony Kipkemboi</a> | <a href="http://thedataengineeringblog.com/" target="_blank">Subscribe to my blog</a></p>
+            <p>Made with 💖 by <a href="https://twitter.com/tonykipkemboi" target="_blank">Tony Kipkemboi</a> | <a href="http://thedataengineeringblog.com/" target="_blank">📰 Subscribe to my Blog</a></p>
         </div>
     """
     st.markdown(footer, unsafe_allow_html=True)
