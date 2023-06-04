@@ -347,9 +347,18 @@ def main() -> None:
             color: black;
             text-align: center;
             }
+
+            .qr-code {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            width: 50px;
+            height: 50px;
+            }
         </style>
         <div class="footer">
             <p>Made with 💖 by <a href="https://twitter.com/tonykipkemboi" target="_blank">Tony Kipkemboi</a> | <a href="https://thedataengineerblog.com/" target="_blank">📰 Subscribe to my Blog</a></p>
+            <img class="qr-code" src="https://raw.githubusercontent.com/tonykipkemboi/StreamrDashboard/main/assets/bmc_qr.png" alt="QR Code">
         </div>
     """
     st.markdown(footer, unsafe_allow_html=True)
