@@ -348,17 +348,13 @@ def main() -> None:
             text-align: center;
             }
 
-            .qr-code {
-            position: absolute;
-            right: 10px;
-            bottom: 10px;
-            width: 50px;
-            height: 50px;
+            .footer img {
+            width: 150px;
+            height: auto;
             }
         </style>
         <div class="footer">
-            <p>Made with 💖 by <a href="https://twitter.com/tonykipkemboi" target="_blank">Tony Kipkemboi</a> | <a href="https://thedataengineerblog.com/" target="_blank">📰 Subscribe to my Blog</a></p>
-            <img class="qr-code" src="https://raw.githubusercontent.com/tonykipkemboi/StreamrDashboard/main/assets/bmc_qr.png" alt="QR Code">
+            <p>Made with 💖 by <a href="https://twitter.com/tonykipkemboi" target="_blank">Tony Kipkemboi</a> | <a href="https://thedataengineerblog.com/" target="_blank">📰 Subscribe to my Blog</a> | <a href="https://www.buymeacoffee.com/tonykip"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=tonykip&button_colour=ffffff&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00" /></a></p>
         </div>
     """
     st.markdown(footer, unsafe_allow_html=True)
