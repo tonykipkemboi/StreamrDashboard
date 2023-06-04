@@ -1,8 +1,8 @@
-# ⚡Streamr BrubeckScan Dashboard App⚡
+# ⚡Streamr Node Dashboard App⚡
 
 [app.webm](https://github.com/tonykipkemboi/StreamrDashboard/assets/64493665/fb5f421e-4423-4e70-a371-ed5b72353cd1)
 
-The Streamr BrubeckScan Dashboard App is a Streamlit version clone of the original [BrubeckScan App](https://brubeckscan.app/) designed for fetching and visualizing detailed information about any Streamr node in the network. The application effectively interacts with the Streamr Network's [BrubeckScan API](https://brubeckscan.app/api) to retrieve the latest data about a node given its Ethereum address.
+Streamr Node Dashboard is an application built using Streamlit inspired by [BrubeckScan](https://brubeckscan.app/), a Streamr node and rewards monitoring dApp built and maintained by Streamr community member [Adam Phi Vo](https://www.adamvo.dev/). The application is built around the concept of a Streamr Node, an entity in the network that processes and stores data.
 
 This makes it an essential tool for anyone interested in or working with the Streamr Network, including node operators.
 
@@ -55,3 +55,9 @@ To set up the Streamr BrubeckScan Dashboard App by replicating this project, fol
 4. **Viewing Data**: The fetched data will be displayed in an organized and user-friendly manner. You can also select your timezone for the display of time-related data.
 
 With these steps, you can easily and efficiently _fetch_, _visualize_, and _analyze_ data for any Streamr node in the network.
+
+## If you're feeling generous, please buy me coffee by scanning the QR code below
+
+![Coffee](assets/bmc_qr.png)
+
+Thanks for the coffee ☕
